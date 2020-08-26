@@ -9,6 +9,9 @@ preview: ### workers.dev
 dev:
 	@wrangler dev
 
+build:
+	@wrangler build
+
 list-kv-ns:
 	@wrangler kv:namespace list | jq
 
