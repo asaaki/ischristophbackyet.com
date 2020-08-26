@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+        <style>
+            :root {
+                /* combination of GitHub, Medium, WordPress */
+                --system-fonts: system-ui, -apple-system, BlinkMacSystemFont,
+                                "Segoe UI", Roboto, "Helvetica Neue", Helvetica,
+                                Oxygen-Sans, Ubuntu, Cantarell, Arial, sans-serif,
+                                "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+                --monospace: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+            }
+            body {
+                font-family: var(--system-fonts);
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            h1 {
+                font-size: 4em;
+                color: #3eb5f1;
+                margin: 0;
+            }
+
+            h2 {
+                font-weight: 300;
+            }
+
+            .centered {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+            }
+
+            #ferris {
+                width: 75%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="centered">
+            <h1>404 Not Found</h1>
+            <h2>Oh dang! We couldn't find that page.</h2>
+            <img id="ferris" alt="a sad crab is unable to unable to lasso a paper airplane. 404 not found." src="./img/404-wrangler-ferris.gif">
+        </div>
+    </body>
+</html>

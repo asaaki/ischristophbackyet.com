@@ -1,0 +1,17 @@
+name = "ischristophbackyet_com"
+type = "webpack"
+account_id = "$yourAccountId"
+workers_dev = true
+route = ""
+zone_id = ""
+# webpack_config = "webpack.config.js"
+
+[site]
+bucket = "public" # the static assets to be served by the worker
+# entry-point = "workers-site" # the workers code for the site
+# include = ["included_dir"] # must be an array.
+# exclude = ["excluded_dir"] # must be an array; overriden by include if both present
+
+[env.production]
+zone_id = "$yourZoneId"
+route = "*ischristophbackyet.com/*"
