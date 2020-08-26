@@ -1,9 +1,16 @@
 import { getAssetFromKV, Options } from "@cloudflare/kv-asset-handler";
 import { logHeaders } from "./utils";
 
-export async function handleEvent(event: FetchEvent, DEBUG: boolean) {
+/**
+ * The business!
+ * @param event - the FetchEvent
+ * @param DEBUG - disable asset fetch caching, control error responses, and enables some verbose logging
+ */
+export async function handleEvent(event: FetchEvent, DEBUG: boolean = false) {
   const url = new URL(event.request.url);
-  console.log(`[HANDLE EVENT] -> url = ${JSON.stringify(url)}`);
+  if (DEBUG) {
+    console.log(`[HANDLE EVENT] -> url = ${JSON.stringify(url)}`);
+  }
   let options: Partial<Options> = {};
 
   /**
@@ -17,7 +24,9 @@ export async function handleEvent(event: FetchEvent, DEBUG: boolean) {
       options.cacheControl = { bypassCache: true };
     }
     const page = await getAssetFromKV(event, options);
-    logHeaders("page", page.headers);
+    if (DEBUG) {
+      logHeaders("page", page.headers);
+    }
 
     const response = new Response(page.body, page);
     response.headers.set("x-xss-protection", "1; mode=block");
@@ -46,13 +55,14 @@ export async function handleEvent(event: FetchEvent, DEBUG: boolean) {
       "cache-control",
       "public, max-age=86400, s-maxage=14400, max-stale=3600, stale-while-revalidate=3600, stale-if-error=3600"
     );
-    logHeaders("response", response.headers);
+    if (DEBUG) {
+      logHeaders("response", response.headers);
+    }
     // https://developers.cloudflare.com/workers/learning/using-streams
     let { readable, writable } = new TransformStream();
     // @ts-ignore: strictNullChecks
     response.body.pipeTo(writable);
     return new Response(readable, response);
-    // return response;
   } catch (e) {
     // if an error is thrown try to serve the asset at 404.html
     if (!DEBUG) {
@@ -68,7 +78,6 @@ export async function handleEvent(event: FetchEvent, DEBUG: boolean) {
         });
       } catch (e) {}
     }
-
     return new Response(e.message || e.toString(), { status: 500 });
   }
 }

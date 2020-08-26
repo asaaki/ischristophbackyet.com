@@ -17,12 +17,16 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(handleEvent(event, DEBUG));
   } catch (e) {
     if (DEBUG) {
-      return event.respondWith(
-        new Response(e.message || e.toString(), {
-          status: 500,
-        })
-      );
+      return debugResponse(event, e);
     }
     event.respondWith(new Response("Internal Error", { status: 500 }));
   }
 });
+
+function debugResponse(event: FetchEvent, error: Error) {
+  return event.respondWith(
+    new Response(error.message || error.toString(), {
+      status: 500,
+    })
+  );
+}
