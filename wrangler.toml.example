@@ -14,4 +14,4 @@ bucket = "public" # the static assets to be served by the worker
 
 [env.production]
 zone_id = "$yourZoneId"
-route = "*ischristophbackyet.com/*"
+route = "ischristophbackyet.com/*"
