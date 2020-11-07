@@ -1,4 +1,6 @@
 dist
+newrelic.js
+newrelic.ts
 node_modules
 worker
 wrangler.toml

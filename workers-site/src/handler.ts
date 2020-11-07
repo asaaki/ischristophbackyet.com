@@ -34,7 +34,7 @@ export async function handleEvent(event: FetchEvent, DEBUG: boolean = false) {
     response.headers.set("x-frame-options", "DENY");
     response.headers.set(
       "content-security-policy",
-      "default-src 'self'; frame-src 'none'; object-src 'none'; script-src 'none'; base-uri 'none'"
+      "default-src 'self'; connect-src 'self' https://js-agent.newrelic.com https://bam.eu01.nr-data.net; script-src 'self'; script-src-elem 'self' https://js-agent.newrelic.com https://bam.eu01.nr-data.net; frame-src 'none'; object-src 'none'; base-uri 'none'"
     );
     response.headers.set(
       "referrer-policy",

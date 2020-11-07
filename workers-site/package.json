@@ -14,21 +14,21 @@
     "transpile": "tsc --project ./test"
   },
   "dependencies": {
-    "@cloudflare/kv-asset-handler": "~0.0.11"
+    "@cloudflare/kv-asset-handler": "0.0.12"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^2.0.0",
-    "@types/chai": "^4.2.11",
+    "@cloudflare/workers-types": "^2.1.0",
+    "@types/chai": "^4.2.14",
     "@types/mocha": "^7.0.2",
     "chai": "^4.2.0",
-    "mocha": "^8.0.1",
-    "prettier": "^2.0.5",
+    "mocha": "^8.2.1",
+    "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
     "service-worker-mock": "^2.0.5",
     "ts-loader": "^7.0.5",
-    "typescript": "^3.9.5",
     "types-cloudflare-worker": "^1.2.0",
-    "webpack": "^4.43.0",
+    "typescript": "^3.9.5",
+    "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   }
 }

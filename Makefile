@@ -1,3 +1,5 @@
+NR_NATIVE_METRICS_NO_BUILD = true
+
 prod: publish
 
 publish: ### production
